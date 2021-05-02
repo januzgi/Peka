@@ -10,6 +10,7 @@ $color-light-gray: #d9d9d9;
 $color-white: #fefefe;
 $color-black: #202121;
 $font: 'Poppins', sans-serif;
+$br-common: 10px;
 // # # # # # # # # # # # # # # #
 
 // # # # # # # # # # # # # # # #
@@ -20,6 +21,7 @@ html {
 body {
   font-family: $font;
   font-weight: 400;
+  background-color: white;
 }
 *:focus-visible {
   outline: 1px solid blue;
@@ -62,9 +64,10 @@ ul {
 button,
 li a {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
+  padding: 0.3rem 1.2rem;
 }
 a {
   text-decoration: none;
@@ -74,3 +77,142 @@ a:focus {
   text-decoration: underline;
 }
 // # # # # # # # # # # # # # # #
+main,
+footer {
+  margin: 0 2rem;
+}
+main {
+  margin: 2rem;
+}
+header {
+  background: $color-white;
+  box-shadow: 0px -10px 10px 5px #212121;
+}
+header ul {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+.app-title {
+  display: none;
+
+  // display: flex;
+  position: relative;
+  z-index: 10;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.25s cubic-bezier(0.39, 0.575, 0.565, 1);
+  color: $color-white;
+  font-size: 3rem;
+  width: 100%;
+  height: 100%;
+  animation: app-opening 3s forwards;
+}
+.app-title::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: $color-darkest;
+}
+@keyframes app-opening {
+  from {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  99% {
+    visibility: visible;
+    opacity: 0;
+  }
+  to {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+header .menu-filter {
+  margin: 2rem;
+}
+header button {
+  border: 1px solid $color-primary;
+  border-radius: $br-common;
+  background: none;
+  color: $color-black;
+  height: 100%;
+}
+header .menu-filter + .menu-filter {
+  margin-left: 0;
+}
+header .MuiSvgIcon-root {
+  padding-right: 0;
+  height: 1.5em;
+  width: 1.5em;
+  fill: $color-primary;
+}
+
+.ilmoitukset .MuiSvgIcon-root {
+  padding: 0;
+  fill: $color-white;
+}
+.ilmoitukset {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+.ilmoitus {
+  border-radius: $br-common;
+  background-color: $color-white;
+  border: 1px solid $color-primary;
+  display: grid;
+  grid-template-rows: 100px 140px;
+  overflow: hidden;
+}
+.ilmoitus .tekstit {
+  padding: 1.5rem;
+  position: relative;
+}
+.ilmoitus p {
+  font-size: 1.2rem;
+}
+.ilmoitus h2 {
+  font-size: 1.6rem;
+}
+.laji-kuva img,
+.laji-kuva {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.laji-ikoni {
+  position: absolute;
+  right: -0.2em;
+  bottom: -0.2em;
+  background-color: $color-primary;
+  padding: 0.6rem;
+  border-top-left-radius: $br-common;
+  width: 1.4em;
+  height: 1.4em;
+}
+.laji-ikoni .MuiSvgIcon-root {
+  width: 1.4em;
+  height: 1.4em;
+}
+@media only screen and (min-width: 500px) {
+  .ilmoitukset {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media only screen and (min-width: 700px) {
+  .ilmoitukset {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

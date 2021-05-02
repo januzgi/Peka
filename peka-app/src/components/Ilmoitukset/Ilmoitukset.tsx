@@ -13,10 +13,13 @@ interface Props {
 }
 
 const Ilmoitukset: FC<Props> = (props: Props): ReactElement => {
+  const baseUrl = 'images/laji-kuvat/';
+
   const ilmoitukset = {
     ilmoitus1: {
       id: 1,
       laji: <SportsHockey />,
+      lajiKuva: 'jaakiekko.jpeg',
       otsikko: 'Jääkiekko, höntsy',
       paikka: 'Koulukadun kenttä, Eteläpuisto',
       aika: format(new Date(), 'd.M., H:mm'),
@@ -24,6 +27,7 @@ const Ilmoitukset: FC<Props> = (props: Props): ReactElement => {
     ilmoitus2: {
       id: 2,
       laji: <SportsSoccer />,
+      lajiKuva: 'jaakiekko.jpeg',
       otsikko: 'Jalkapallo, höntsy',
       paikka: 'Kiovanpuisto kenttä, Kaleva',
       aika: format(new Date(), 'd.M., H:mm'),
@@ -31,6 +35,7 @@ const Ilmoitukset: FC<Props> = (props: Props): ReactElement => {
     ilmoitus3: {
       id: 3,
       laji: <SportsBasketball />,
+      lajiKuva: 'jaakiekko.jpeg',
       otsikko: 'Koripallo, höntsy',
       paikka: 'Tammelan ala-aste, Tammela',
       aika: format(new Date(), 'd.M., H:mm'),
@@ -42,6 +47,7 @@ const Ilmoitukset: FC<Props> = (props: Props): ReactElement => {
       <Ilmoitus
         key={item.id}
         laji={item.laji}
+        lajiKuva={baseUrl + item.lajiKuva}
         otsikko={item.otsikko}
         aika={item.aika}
         paikka={item.paikka}
